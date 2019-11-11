@@ -24,7 +24,7 @@ namespace MidtierApi
         private string _clientId;
         private string _clientSecret;
         private string[] _allowedScopes;
-        private string _scope = "user.echo";
+        private string _scope = "user.claim";
 
         public UserClaim(IAuthToken authToken, IHttpClient httpClient)
         {
