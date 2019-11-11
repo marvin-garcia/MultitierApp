@@ -49,25 +49,25 @@ namespace FrontendApp.Controllers
         //    return Request.Headers["X-MS-TOKEN-AAD-EXPIRES-ON"];
         //}
 
-        [HttpGet("IdTokenOnBehalfOf")]
-        public async Task<AccessTokenResult> GetUserToken()
-        {
-            string[] scopes = _configuration["AzureAd:RequestedScopes"].Split(',')
-                .Select(x => $"api://{_configuration["AzureAd:MidtierClientId"]}/{x}").ToArray();
+        //[HttpGet("IdTokenOnBehalfOf")]
+        //public async Task<AccessTokenResult> GetUserToken()
+        //{
+        //    string[] scopes = _configuration["AzureAd:RequestedScopes"].Split(',')
+        //        .Select(x => $"api://{_configuration["AzureAd:MidtierClientId"]}/{x}").ToArray();
 
-            scopes = new string[]
-            {
-                $"api://{_configuration["AzureAd:MidtierClientId"]}/.default"
-            };
+        //    scopes = new string[]
+        //    {
+        //        $"api://{_configuration["AzureAd:MidtierClientId"]}/.default"
+        //    };
 
-            var accessTokenResult = await _authToken.GetOnBehalfOf(
-                _configuration["AzureAd:TenantId"],
-                _configuration["AzureAd:ClientId"],
-                _configuration["AzureAd:ClientSecret"],
-                Request.Headers["X-MS-TOKEN-AAD-ID-TOKEN"],
-                scopes);
+        //    var accessTokenResult = await _authToken.GetOnBehalfOf(
+        //        _configuration["AzureAd:TenantId"],
+        //        _configuration["AzureAd:ClientId"],
+        //        _configuration["AzureAd:ClientSecret"],
+        //        Request.Headers["X-MS-TOKEN-AAD-ID-TOKEN"],
+        //        scopes);
 
-            return accessTokenResult;
-        }
+        //    return accessTokenResult;
+        //}
     }
 }
